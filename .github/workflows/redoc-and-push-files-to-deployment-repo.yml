@@ -1,6 +1,7 @@
 name: Redoc and push files to bucket
 
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
   copy-files:
