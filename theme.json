@@ -2,11 +2,11 @@
   "theme": {
     "colors": {
       "primary": {
-        "main": "#F8F9FA"
+        "main": "#0D6EFD"
       }
     },
     "sidebar": {
-      "background-color": "#FFFFFF"
+      "background-color": "#F8F9FA"
     },
     "logo": {
       "gutter": "5px",
