@@ -1,12 +1,12 @@
 openapi: 3.0.0
 servers:
-  - description: NFT Passport API
-    url: 'https://api.nftpassport.travel'
+  - description: NuBaDoo API
+    url: 'https://api.nubadoo.com'
   - url: |
       https://8a58sxz9vc.execute-api.eu-west-1.amazonaws.com/production
     description: Demo server...
 info:
-  title: NFT Travel Passport API Documentation
+  title: NuBaDoo API Documentation
   description: |
     *The NFT Travel Passposrt API powers the mechanism for interfacing with the backend system to manage resources in the NFT system. The API allows developers to access the platform's functionalities and incorporate the service into their own apps.*
 
@@ -46,12 +46,12 @@ info:
   termsOfService: 'http://developer.nftpassport.travel/terms-of-service'
   version: '1.0'
   contact:
-    name: NFT Travel Passport Backend Team
-    url: 'http://developer.nftpassport.travel'
+    name: Nubadoo Backend Team
+    url: 'http://developer.nubadoo.com'
     email: api@nftpassport.travel
   x-logo:
-    url: 'http://ireland.nftpassport.travel/images/logo.png'
-    backgroundColor: '#009A44'
+    url: 'http://developer.nubadoo.com/logo.png'
+    backgroundColor: '#212529'
 paths:
   places:
     /places:
