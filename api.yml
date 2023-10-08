@@ -51,7 +51,7 @@ info:
     email: api@nftpassport.travel
   x-logo:
     url: 'http://developer.nubadoo.com/logo.png'
-    backgroundColor: '#212529'
+    backgroundColor: '#FFFFFF'
 paths:
   places:
     /places:
