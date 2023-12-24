@@ -1,6 +1,9 @@
 name: Redoc and push files to bucket
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -21,7 +24,7 @@ jobs:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         source: 'index.html'
-        dest: 's3://developer.nubadoo.com/index.html'
+        dest: 's3://developer.nubadoo.com/open-api/index.html'
         
     - name: Copy logo.png to s3 bucket developer.nubadoo.com
       uses: prewk/s3-cp-action@v2
@@ -29,7 +32,7 @@ jobs:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         source: 'logo.png'
-        dest: 's3://developer.nubadoo.com/logo.png'
+        dest: 's3://developer.nubadoo.com/open-api/logo.png'
 
     - name: Invalidate CloudFront
       uses: chetan/invalidate-cloudfront-action@v2
