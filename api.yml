@@ -1,317 +1,929 @@
 openapi: 3.0.0
-servers:
-  - description: NuBaDoo API
-    url: 'https://api.nubadoo.com'
-  - url: |
-      https://8a58sxz9vc.execute-api.eu-west-1.amazonaws.com/production
-    description: Demo server...
+
 info:
-  title: NuBaDoo API Documentation
+  title: Health Tracker API
   description: |
-    *The NFT Travel Passposrt API powers the mechanism for interfacing with the backend system to manage resources in the NFT system. The API allows developers to access the platform's functionalities and incorporate the service into their own apps.*
-
-    The NFT Travel Passort API's backbone is HTTP. The nature of our API is RESTful. It has a set of predictable resource URLs. It returns HTTP response codes to indicate errors or success. It also accepts JSON as an HTTP body payload and returns it.
-
-    You can use your favorite HTTP/REST library for your programming language or an HTTP client like Postman or CURL to use the API.
-
-    Happy coding **:-)**
-
+    *Developers can use the Nubadoo Health Tracker API to tap into the platform's capabilities and incorporate the service into their own apps.*
+    
+    The Nubadoo Health Tracker API's backbone is HTTP. The nature of our API is RESTful. It has a set of predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts JSON as an HTTP body payload and returns it.
+    
+    You can use your favorite HTTP/REST library for your programming language or an HTTP client like Postman or CURL to use Telephant's API.
+    
+    Happy programming **:-)**
+    
     ## HTTP Response Status Codes
-    HTTP response status codes show whether or not a particular HTTP request was completed successfully. Section 10 of RFC 2616 defines the status codes listed below. RFC 7231 contains an updated specification.
-    Telephant API makes use of the following HTTP status codes, grouped into three classes:
+    HTTP response status codes show whether or not a particular HTTP request was completed successfully. Section 10 of [RFC 2616](https://datatracker.ietf.org/doc/html/rfc2616) defines the status codes listed below. [RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231) contains an updated specification.
+    
+    The Nubadoo Health Tracker API makes use of the following HTTP status codes, grouped into three classes:
+    
     ### Successful Responses - 2XX
+    
     #### 200 - OK
+    
     The request has succeeded.
+    
     #### 201 - Created
+    
     As a result of the request's success, a new resource has been generated. This is the response that is normally sent in response to POST or some PUT queries.
+    
     ### Client Error - 4XX
-
+    
     #### 400 - Bad Request
     Due to incorrect syntax, the server was unable to understand the request.
-
+    
     #### 401 - Unauthorized
     Authentication is required and has failed or has not yet been provided.
-
+    
     #### 403 - Forbidden
     The server refuses to provide the requested resource because the client does not have access permissions to the resource; that is, it is unauthorized. Unlike 401, the server is aware of the client's identity.
-
+    
     #### 404 - Not Found
     The requested resource was not found. The client is free to make additional requests.
-
+    
     #### 405 - Method Not Allowed
     A GET request on a form that needs data to be presented via POST, or a PUT request on a read-only resource, for example, is not supported for the requested resource.
+    
     ### Server Error - 5XX
+    
     #### 500 - Internal Server Error
     The server has come upon a circumstance that it is unsure how to handle.  Our team will be reviewing the root cause of issues and resolving the problems as soon as possible.
-  termsOfService: 'http://developer.nftpassport.travel/terms-of-service'
+  
   version: '1.0'
   contact:
-    name: Nubadoo Backend Team
-    url: 'http://developer.nubadoo.com'
-    email: api@nftpassport.travel
+    name: Nubadoo Dev Support Team
+    url: http://developer.nubadoo.com
+    email: developers@nubadoo.com
   x-logo:
-    url: 'http://developer.nubadoo.com/logo.png'
-    backgroundColor: '#FFFFFF'
+    url: "http://developer.telephant.co.za/telephant-documentation-logo.jpg"
+    backgroundColor: "#fafafa"
+  termsOfService: http://www.telephant.co.za/terms-of-service
+
+servers:
+  - description: Dev Server
+    url: http://localhost:7060
+  - description: Live Server
+    url: https://api.nubadoo.com
+
+tags:
+- name: Activities
+  description: |
+    Activity tracking allows users to record, aggregate and analyze data related to physical activities and exercises, such as steps taken, distances covered, and workout intensity.
+
+- name: Fitness Goals
+  description: |
+    The Fitness Goal endpoint allows users to track and manage their fitness-related activities and progress. It includes actions for recording, retrieving, updating, and managing data related to exercises, workouts and fitness goals.
+
+- name: Food Items
+  description: |
+    Access to a database of food items with nutritional information, including calories, macronutrients (carbohydrates, proteins, fats), vitamins, and minerals.  Users can search and retrieve information about specific food items from the database.
+    
+- name: Meal Logs
+  description: |
+    Track and manage dietary intake with the Meal Logs API endpoint. Capture and maintain detailed records of daily nutrition, enabling users to log, retrieve, update, and delete meal-related data effortlessly. Empower users to monitor their dietary habits, facilitating better health and wellness tracking within the application
+
+- name: Metrics
+  description: |
+    The Health Metrics endpoint allows users to record, retrieve, update, and manage a range of health-related measurements and data to track their overall well-being and monitor their progress over time.
+    
+- name: Ping
+  description: |
+    Ping is a utility function that can be used to test the health of the NuBaDoo Health Tracker API service.  The ping service only responds with 'Pong'.
+    
+- name: Users
+  description: |
+    Manage user profiles and authentication through the Users API endpoint. This functionality allows seamless creation, retrieval, modification, and deletion of user accounts. Access various user-related functionalities, enabling secure authentication and personalized experiences within the application
+    
+- name: Workout Plans
+  description: |
+    Access and manage your personalized workout plans designed to meet your fitness goals efficiently. This API endpoint empowers users to view, create, and organize workout routines tailored to their preferences and fitness aspirations. Stay motivated and track progress with 'Your Workout Plans' to achieve your fitness objectives effectively.
+
+x-tagGroups:
+- name: Functionality
+  tags:
+    - Activities
+    - Fitness Goals
+    - Food Items
+    - Meal Logs
+    - Metrics
+    - Users
+    - Workout Plans
+- name: Utility
+  tags:
+    - Ping
+
 paths:
-  places:
-    /places:
-      get:
-        tags:
-          - Places
-        description: Returns a list of Places.
-        operationId: getPlaces
-        responses:
-          '200':
-            description: Success
-            content:
-              application/json:
-                examples:
-                  getPlaces:
-                    $ref: '#/components/examples/getPlaces'
-          '400':
-            $ref: '#/components/responses/400'
-          '500':
-            $ref: '#/components/responses/500'
-      post:
-        summary: Add a place.
-        description: Create a new place.
-        tags:
-          - Places
-        requestBody:
-          description: Define the properties of the account to create.
-          required: true
+  /v1/activities:
+    get:
+      summary: Get all activities
+      operationId: getAllActivities
+      tags:
+        - Activities
+      description: Success
+      responses:
+        '200':
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - accountName
-                properties:
-                  accountName:
-                    type: string
-                    minLength: 3
-                    maxLength: 16
-                    example: my-company
-                    description: |
-                      This field must be used as a reference on bank statements, 
-                      and Telephant will use it to simplify the process.
-
-                      **Note:** Only alphanumeric characters and hyphens as spaces are accepted 
-                      in this field.
-                      **Note:** The account id in the header will be ignored because 
-                      the owner of the group account will be set to your username's phone number.
-                    format: '^[a-z0-9-]{3,16}$'
-                  description:
-                    type: string
-                    maxLength: 300
-                    example: My Company (Pty) Ltd Airtime Account
-        responses:
-          '200':
-            description: Success
-            content:
-              application/json:
-                examples:
-                  getPlaces:
-                    $ref: '#/components/examples/getPlaces'
-          '400':
-            $ref: '#/components/responses/400'
-          '500':
-            $ref: '#/components/responses/500'
-  'places/{place_id}':
-    '/places/{place_id}':
-      get:
-        tags:
-          - Places
-        description: Returns a specific Place listing.
-        operationId: getPlace
-        parameters:
-          - in: path
-            name: place_id
-            description: Provide the Place ID of a specific Place resource.
-            schema:
-              type: string
-              format: uuid
-            required: true
-        responses:
-          '200':
-            description: Success
-            content:
-              application/json:
-                examples:
-                  getPlaces:
-                    $ref: '#/components/examples/getPlaces'
-          '400':
-            $ref: '#/components/responses/400'
-          '500':
-            $ref: '#/components/responses/500'
-      delete:
-        summary: Delete Place.
-        description: |
-          Delete a specific place.
-        tags:
-          - Places
-        parameters:
-          - in: path
-            name: place_id
-            description: Provide the Place ID of a specific Place resource.
-            schema:
-              type: string
-              format: uuid
-            required: true
-        responses:
-          '410':
-            description: Gone
-            content:
-              application/json:
-                example:
-                  code: 410
-                  name: Gone
-                  message: The ability to delete a group account has been removed.  In future a method for achieving this will be implemented.
-      put:
-        summary: Update place.
-        description: |
-          Update the details of a group account.
-
-          **Note:** It is not possible to update your own username's account through the API 
-          so an account_id must be provided in the header.
-        tags:
-          - Places
-        requestBody:
-          description: |
-            Description...
-          required: true
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  owners:
-                    type: string
-                    pattern: '^(27)[0-9]{9}$'
-                    example: 27821234567
-                    description: |
-                      In the South African phone number format, a user's unique mobile phone number.
-
-                      You can assign multiple owners to a group account but only one per request.
-                  description:
-                    type: string
-                    maxLength: 300
-                    example: My Company (Pty) Ltd Airtime Account
-                  businessType:
-                    type: string
-                    enum:
-                      - private
-                      - public
-                      - ngo
-                      - gov
-        parameters:
-          - in: path
-            name: place_id
-            description: Description
+                type: string
+    post:
+      summary: Add a new activity
+      operationId: addActivity
+      tags:
+        - Activities
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-              format: uuid
-            required: true
-        responses:
-          '201':
-            description: Success
-            content:
-              application/json:
-                example:
-                  message: The group account was successfully updated.
-          '500':
-            $ref: '#/components/responses/500'
-          4XX:
-            description: BadRequestError
-            content:
-              application/json:
-                examples:
-                  ConflictError-1:
-                    value:
-                      code: 400
-                      name: ConflictError
-                      message: The user telephone number is already an owner on this account.
-                  ConflictError-2:
-                    value:
-                      code: 400
-                      name: ConflictError
-                      message: Not a valid user's telphone number.
-                  ConflictError-3:
-                    value:
-                      code: 400
-                      name: ConflictError
-                      message: No relevant fields to update were defined.
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+  /v1/activities/user/{user-id}:
+    get:
+      summary: Get activities by user ID
+      operationId: getActivitiesByUserId
+      tags:
+        - Activities
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+    delete:
+      summary: Delete activities by user ID
+      operationId: deleteActivitiesByUserId
+      tags:
+        - Activities
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /v1/activities/{activity-id}:
+    delete:
+      summary: Delete an activity by its activity ID
+      operationId: deleteActivity
+      tags:
+        - Activities
+      responses:
+        '204':
+          description: Activity deleted
+        '404':
+          description: Activity not found
+    patch:
+      summary: Update an activity's information by the activity ID
+      operationId: updateActivity
+      tags:
+        - Activities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '204':
+          description: User updated
+        '404':
+          description: User not found
+    get:
+      summary: Get an activity by activity ID
+      operationId: getActivityByActivityId
+      tags:
+        - Activities
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          content:
+          description: User not found
+            application/json:
+              schema:
+                type: string
+                
+  /v1/fitness-goals:
+    get:
+      summary: Get all fitness goals
+      operationId: getAllFitnessGoals
+      tags:
+        - Fitness Goals
+      responses:
+        '200':
+          description: Successful operation
+          
+    post:
+      summary: Add a new fitness goal
+      operationId: addFitnessGoal
+      tags:
+        - Fitness Goals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FitnessGoal'
+              
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FitnessGoal'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /v1/fitness-goals/{fitness-goal-id}:
+    get:
+      summary: Get fitness goal by ID
+      operationId: getFitnessGoalByFitnessGoalId
+      tags:
+        - Fitness Goals
+      parameters:
+        - name: fitness-goal-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FitnessGoal'
+        '404':
+          description: Fitness goal not found
+          content:
+            application/json:
+              schema:
+                type: string
+    delete:
+      summary: Delete fitness goal by ID
+      operationId: deleteFitnessGoal
+      tags:
+        - Fitness Goals
+      parameters:
+        - name: fitness-goal-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FitnessGoal'
+        '404':
+          description: Fitness goal not found
+          content:
+            application/json:
+              schema:
+                type: string
+    patch:
+      summary: Update fitness goal by ID
+      operationId: updateFitnessGoal
+      tags:
+        - Fitness Goals
+      parameters:
+        - name: fitness-goal-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FitnessGoal'
+      responses:
+        '204':
+          description: Fitness goal updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FitnessGoal'
+        '404':
+          description: Fitness goal not found
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /v1/food-items:
+    get:
+      summary: Get all food items
+      operationId: getAllFoodItems
+      tags:
+        - Food Items
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodItem'
+    post:
+      summary: Add a new food item
+      operationId: addFoodItem
+      tags:
+        - Food Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FoodItem'
+      responses:
+        '201':
+          description: Food item created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodItem'
+  /v1/food-items/{food-item-id}:
+    get:
+      summary: Get a specific food item by ID
+      operationId: getFoodItemByFoodItemId
+      tags:
+        - Food Items
+      parameters:
+        - name: food-item-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodItem'
+        '404':
+          description: Food item not found
+          content:
+            application/json:
+              schema:
+                type: string
+    delete:
+      summary: Delete a food item by ID
+      operationId: deleteFoodItem
+      tags:
+        - Food Items
+      parameters:
+        - name: food-item-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Food item deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodItem'
+        '404':
+          description: Food item not found
+          content:
+            application/json:
+              schema:
+                type: string
+    patch:
+      summary: Update an existing food item
+      operationId: updateFoodItem
+      tags:
+        - Food Items
+      parameters:
+        - name: food-item-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FoodItem'
+      responses:
+        '204':
+          description: Food item updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodItem'
+        '404':
+          description: Food item not found
+          content:
+            application/json:
+              schema:
+                type: string
+                
+  /v1/ping:
+    get:
+      summary: Get Pong response
+      operationId: pong
+      tags:
+        - Ping
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pong'
+                
+  /v1/users:
+    get:
+      summary: Get all users
+      operationId: getAllUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Add a new user
+      operationId: addUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  '/v1/users/{user-id}':
+    get:
+      summary: Get a user by their user ID
+      operationId: getUserByUserId
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: string
+    delete:
+      summary: Delete a user by their user ID
+      operationId: deleteUser
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User deleted
+        '404':
+          description: User not found
+    patch:
+      summary: Update a user's information by their user ID
+      operationId: updateUser
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '204':
+          description: User updated
+        '404':
+          description: User not found
+  '/v1/users/email/{email}':
+    get:
+      summary: Get a user by their email address
+      operationId: getUserByEmail
+      tags:
+        - Users
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+          
+  /v1/workout-plans:
+    get:
+      summary: Get all workout plans
+      operationId: getAllWorkoutPlans
+      tags:
+        - Workout Plans
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkoutPlan'
+    post:
+      summary: Add a new workout plan
+      operationId: addWorkoutPlan
+      tags:
+        - Workout Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutPlan'
+      responses:
+        '201':
+          description: Workout plan created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkoutPlan'
+  '/v1/workout-plans/{workout-plan-id}':
+    get:
+      summary: Get a workout plan by its workout plan ID
+      operationId: getWorkoutPlanByWorkoutPlanId
+      tags:
+        - Workout Plans
+      parameters:
+        - name: workout-plan-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkoutPlan'
+        '404':
+          description: Workout plan not found
+    delete:
+      summary: Delete a workout plan by its workout plan ID
+      operationId: deleteWorkoutPlan
+      tags:
+        - Workout Plans
+      parameters:
+        - name: workout-plan-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Workout plan deleted
+        '404':
+          description: Workout plan not found
+    patch:
+      summary: Update a workout plan's information by its workout plan ID
+      operationId: updateWorkoutPlan
+      tags:
+        - Workout Plans
+      parameters:
+        - name: workout-plan-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutPlan'
+      responses:
+        '204':
+          description: Workout plan updated
+        '404':
+          description: Workout plan not found
+
+        
 components:
-  responses:
-    '400':
-      description: |
-        Client error
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                example: 400
-                description: |
-                  Please review the documentation for [HTTP Response Status Codes](/#section/HTTP-Response-Status-Codes)
-                  Possible values are:
-                    - 400 - Bad Request
-                    - 401 - Unauthorized
-                    - 403 - Forbidden
-                    - 404 - Not Found
-                    - 405 - Method Not Allowed
-              name:
-                type: string
-                example: BadRequest
-                description: This value will always be returned as 'bumpy case'.
-              message:
-                type: string
-                description: |
-                  The message field will provide specific information as to the reason for the error.
-                example: The account ID provided is not valid.
-    '500':
-      description: |
-        Server error  
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                example: 500
-              name:
-                type: string
-                example: InternalServerError
-              message:
-                type: string
-                example: We are sorry but something went wrong on our side.
-  examples:
-    getPlaces:
-      value:
-        page: 1
-        total_pages: 1
-        total_results: 3
-        results:
-          - _id: 60f57f3a6023f819ae7aa454
-            accountName: '27829524031'
-          - _id: 60ebd53e2f79311541618bc4
-            accountName: MyCompany
-            description: The account description for My Company
-          - _id: 60ebd53e2f79311541618bc5
-            accountName: My Company 2
-            description: The account description for My Company 2
   schemas:
-    place:
+    Activity:
       type: object
       properties:
-        id:
+        activityId:
           type: integer
-          format: int64
-tags:
-  - name: Places
-    description: Places record the physical location where a beacon may be found.   It can be used to group various beacons to particular area.
-  - name: Beacons
-  - name: Badges
+          description: Unique identifier for the activity
+        userId:
+          type: integer
+          description: Reference to the user associated with the activity
+        activityType:
+          type: string
+          maxLength: 20
+          description: Type of activity
+        durationMinutes:
+          type: integer
+          description: Duration of the activity in minutes
+        distanceKM:
+          type: number
+          format: double
+          nullable: true
+          description: Distance covered in kilometers (nullable)
+        workoutIntensity:
+          type: string
+          maxLength: 20
+          description: Intensity level of the workout
+        activityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+    FitnessGoal:
+      type: object
+      properties:
+        goalId:
+          type: integer
+          description: Unique identifier for the fitness goal
+        userId:
+          type: integer
+          description: Reference to the user associated with the fitness goal
+        goalType:
+          type: string
+          maxLength: 10
+          description: Type of fitness goal (ENUM)
+        targetValue:
+          type: number
+          format: double
+          description: Target value for the fitness goal
+        targetDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Target date for achieving the goal (nullable)
+        achieved:
+          type: boolean
+          description: Indicates if the fitness goal has been achieved
+
+    FoodItem:
+      type: object
+      properties:
+          foodItemId:
+            type: integer
+            description: Unique identifier for the food item
+          name:
+            type: string
+            maxLength: 255
+            description: Name of the food item
+          calories:
+            type: integer
+            description: Amount of calories in the food item
+          carbohydrates:
+            type: number
+            format: double
+            description: Amount of carbohydrates in the food item
+          proteins:
+            type: number
+            format: double
+            description: Amount of proteins in the food item
+          fats:
+            type: number
+            format: double
+            description: Amount of fats in the food item
+          vitamins:
+            type: string
+            maxLength: 255
+            nullable: true
+            description: Vitamins in the food item (nullable)
+          minerals:
+            type: string
+            maxLength: 255
+            nullable: true
+            description: Minerals in the food item (nullable)
+
+    MealLog:
+      type: object
+      properties:
+
+    Metric:
+      type: object
+      properties:
+        metricId:
+          type: integer
+          description: Unique identifier for the metric
+        userId:
+          type: integer
+          description: Reference to the user associated with the metric
+        weight:
+          type: number
+          format: double
+          description: Weight of the user
+        height:
+          type: number
+          format: double
+          description: Height of the user
+        bmi:
+          type: number
+          format: double
+          description: Body Mass Index (BMI) of the user
+        systolicBloodPressure:
+          type: integer
+          description: Systolic blood pressure of the user
+        diastolicBloodPressure:
+          type: integer
+          description: Diastolic blood pressure of the user
+        heartRate:
+          type: integer
+          description: Heart rate of the user
+        bloodSugar:
+          type: number
+          format: double
+          description: Blood sugar level of the user
+        sleepDuration:
+          type: integer
+          description: Duration of sleep in minutes
+        sleepQuality:
+          type: string
+          maxLength: 10
+          description: Sleep quality (ENUM)
+        createdAt:
+          type: string
+          format: date-time
+          description: Date and time of metric creation
+
+    Pong:
+      type: object
+      properties:
+        message:
+          type: String
+          description: Returns "Pong"
+        time: 
+          type: string
+          format: date-time
+          description: Timestamp of the request
+
+    User:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: Unique identifier for the user
+        username:
+          type: string
+          maxLength: 50
+          description: Username of the user
+        email:
+          type: string
+          maxLength: 100
+          description: Email address of the user
+        password:
+          type: string
+          maxLength: 255
+          description: Password of the user
+        firstName:
+          type: string
+          maxLength: 50
+          description: First name of the user
+        lastName:
+          type: string
+          maxLength: 50
+          description: Last name of the user
+        dateOfBirth:
+          type: string
+          format: date-time
+          nullable: true
+          description: Date of birth of the user (nullable)
+        gender:
+          type: string
+          maxLength: 6
+          description: Gender of the user
+        registrationDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Registration date of the user (nullable)
+
+    WorkoutPlan:
+      type: object
+      properties:
+        planId:
+          type: integer
+          description: Unique identifier for the workout plan
+        userId:
+          type: integer
+          description: Reference to the user associated with the workout plan
+        planName:
+          type: string
+          maxLength: 255
+          description: Name of the workout plan
+        schedule:
+          type: string
+          maxLength: 50
+          nullable: true
+          description: Schedule for the workout plan (nullable)
+        planDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Date of the workout plan (nullable)
+        goal:
+          type: string
+          maxLength: 20
+          description: Goal of the workout plan
+        duration:
+          type: string
+          maxLength: 20
+          description: Duration of the workout plan
+        description:
+          type: string
+          maxLength: 150
+          description: Description of the workout plan
+        content:
+          type: string
+          format: text
+          description: Content or details of the workout plan
