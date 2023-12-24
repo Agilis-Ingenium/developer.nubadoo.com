@@ -7,7 +7,7 @@ info:
     
     The Nubadoo Health Tracker API's backbone is HTTP. The nature of our API is RESTful. It has a set of predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts JSON as an HTTP body payload and returns it.
     
-    You can use your favorite HTTP/REST library for your programming language or an HTTP client like Postman or CURL to use Telephant's API.
+    You can use your favorite HTTP/REST library for your programming language or an HTTP client like Postman or CURL to use Nubadoo's API.
     
     Happy programming **:-)**
     
@@ -54,9 +54,9 @@ info:
     url: http://developer.nubadoo.com
     email: developers@nubadoo.com
   x-logo:
-    url: "http://developer.telephant.co.za/telephant-documentation-logo.jpg"
+    url: "http://developer.nubadoo.com/open-api/log.png"
     backgroundColor: "#fafafa"
-  termsOfService: http://www.telephant.co.za/terms-of-service
+  termsOfService: http://www.nubadoo.com/terms-of-service
 
 servers:
   - description: Dev Server
