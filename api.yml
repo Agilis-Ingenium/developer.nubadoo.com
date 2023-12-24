@@ -54,7 +54,7 @@ info:
     url: http://developer.nubadoo.com
     email: developers@nubadoo.com
   x-logo:
-    url: "http://developer.nubadoo.com/open-api/log.png"
+    url: "http://developer.nubadoo.com/open-api/logo.png"
     backgroundColor: "#fafafa"
   termsOfService: http://www.nubadoo.com/terms-of-service
 
