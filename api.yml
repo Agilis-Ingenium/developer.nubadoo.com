@@ -131,11 +131,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Activity'
-        '404':
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+    
     post:
       summary: Add a new activity
       operationId: addActivity
@@ -152,11 +153,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Activity'
-        '404':
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
   /v1/activities/user/{user-id}:
     get:
       summary: Get activities by user ID
@@ -171,11 +172,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Activity'
-        '404':
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     delete:
       summary: Delete activities by user ID
       operationId: deleteActivitiesByUserId
@@ -189,11 +191,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Activity'
-        '404':
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/activities/{activity-id}:
     delete:
@@ -204,8 +206,12 @@ paths:
       responses:
         '204':
           description: Activity deleted
-        '404':
-          description: Activity not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     patch:
       summary: Update an activity's information by the activity ID
       operationId: updateActivity
@@ -219,8 +225,12 @@ paths:
       responses:
         '204':
           description: User updated
-        '404':
-          description: User not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     get:
       summary: Get an activity by activity ID
       operationId: getActivityByActivityId
@@ -233,12 +243,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/fitness-goals:
     get:
@@ -249,6 +258,11 @@ paths:
       responses:
         '200':
           description: Successful operation
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
           
     post:
       summary: Add a new fitness goal
@@ -269,12 +283,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FitnessGoal'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/fitness-goals/{fitness-goal-id}:
     get:
@@ -295,12 +308,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FitnessGoal'
-        '404':
-          description: Fitness goal not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     delete:
       summary: Delete fitness goal by ID
       operationId: deleteFitnessGoal
@@ -319,12 +332,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FitnessGoal'
-        '404':
-          description: Fitness goal not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     patch:
       summary: Update fitness goal by ID
       operationId: updateFitnessGoal
@@ -349,12 +362,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FitnessGoal'
-        '404':
-          description: Fitness goal not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/food-items:
     get:
@@ -389,6 +401,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FoodItem'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
   /v1/food-items/{food-item-id}:
     get:
       summary: Get a specific food item by ID
@@ -408,12 +426,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FoodItem'
-        '404':
-          description: Food item not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     delete:
       summary: Delete a food item by ID
       operationId: deleteFoodItem
@@ -432,12 +450,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FoodItem'
-        '404':
-          description: Food item not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     patch:
       summary: Update an existing food item
       operationId: updateFoodItem
@@ -462,12 +480,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FoodItem'
-        '404':
-          description: Food item not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/ping:
     get:
@@ -482,6 +499,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pong'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
                 
   /v1/users:
     get:
@@ -516,6 +538,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
   '/v1/users/{user-id}':
     get:
       summary: Get a user by their user ID
@@ -535,12 +563,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-          content:
-            application/json:
-              schema:
-                type: string
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     delete:
       summary: Delete a user by their user ID
       operationId: deleteUser
@@ -555,8 +583,12 @@ paths:
       responses:
         '204':
           description: User deleted
-        '404':
-          description: User not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     patch:
       summary: Update a user's information by their user ID
       operationId: updateUser
@@ -577,8 +609,12 @@ paths:
       responses:
         '204':
           description: User updated
-        '404':
-          description: User not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
   '/v1/users/email/{email}':
     get:
       summary: Get a user by their email address
@@ -598,8 +634,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
           
   /v1/workout-plans:
     get:
@@ -616,6 +655,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WorkoutPlan'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     post:
       summary: Add a new workout plan
       operationId: addWorkoutPlan
@@ -636,6 +681,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WorkoutPlan'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
   '/v1/workout-plans/{workout-plan-id}':
     get:
       summary: Get a workout plan by its workout plan ID
@@ -655,8 +706,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkoutPlan'
-        '404':
-          description: Workout plan not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     delete:
       summary: Delete a workout plan by its workout plan ID
       operationId: deleteWorkoutPlan
@@ -671,8 +726,12 @@ paths:
       responses:
         '204':
           description: Workout plan deleted
-        '404':
-          description: Workout plan not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
     patch:
       summary: Update a workout plan's information by its workout plan ID
       operationId: updateWorkoutPlan
@@ -693,8 +752,11 @@ paths:
       responses:
         '204':
           description: Workout plan updated
-        '404':
-          description: Workout plan not found
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
 
         
 components:
@@ -844,7 +906,7 @@ components:
       type: object
       properties:
         message:
-          type: String
+          type: string
           description: Returns "Pong"
         time: 
           type: string
@@ -931,3 +993,52 @@ components:
           type: string
           format: text
           description: Content or details of the workout plan
+          
+  responses:
+    4XX:
+      description: |
+        Client error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 400
+                description: |
+                  Please review the documentation for [HTTP Response Status Codes](/#section/HTTP-Response-Status-Codes)
+
+                  Possible values are:
+                    - 400 - Bad Request
+                    - 401 - Unauthorized
+                    - 403 - Forbidden
+                    - 404 - Not Found
+                    - 405 - Method Not Allowed
+              name:
+                type: string
+                example: 'BadRequest'
+                description: This value will always be returned as 'bumpy case'.
+              message:
+                type: string
+                description: |
+                  The message field will provide specific information as to the reason for the error.
+                example: 'The user ID provided is not valid.'
+
+    5XX:
+      description: |
+        Server error  
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 500
+              name:
+                type: string
+                example: 'InternalServerError'
+              message:
+                type: string
+                example: 'We are sorry but something went wrong on our side.'
