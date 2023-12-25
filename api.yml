@@ -125,6 +125,7 @@ paths:
       description: Success
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -148,7 +149,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Activity'
       responses:
-        '201':
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -166,6 +168,7 @@ paths:
         - Activities
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -184,7 +187,8 @@ paths:
       tags:
         - Activities
       responses:
-        '204':
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -204,8 +208,8 @@ paths:
       tags:
         - Activities
       responses:
-        '204':
-          description: Activity deleted
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -223,8 +227,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Activity'
       responses:
-        '204':
-          description: User updated
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -238,7 +242,7 @@ paths:
         - Activities
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
             application/json:
               schema:
@@ -257,7 +261,7 @@ paths:
         - Fitness Goals
       responses:
         '200':
-          description: Successful operation
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -278,7 +282,7 @@ paths:
               
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -303,7 +307,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -327,7 +331,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -356,8 +360,8 @@ paths:
             schema:
               $ref: '#/components/schemas/FitnessGoal'
       responses:
-        '204':
-          description: Fitness goal updated
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -376,7 +380,7 @@ paths:
         - Food Items
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -395,8 +399,8 @@ paths:
             schema:
               $ref: '#/components/schemas/FoodItem'
       responses:
-        '201':
-          description: Food item created
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -421,7 +425,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -444,8 +448,8 @@ paths:
           schema:
             type: string
       responses:
-        '204':
-          description: Food item deleted
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -474,8 +478,8 @@ paths:
             schema:
               $ref: '#/components/schemas/FoodItem'
       responses:
-        '204':
-          description: Food item updated
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -494,7 +498,7 @@ paths:
         - Ping
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -513,7 +517,7 @@ paths:
         - Users
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -532,8 +536,8 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
       responses:
-        '201':
-          description: User created
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -558,7 +562,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -581,8 +585,8 @@ paths:
           schema:
             type: string
       responses:
-        '204':
-          description: User deleted
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -607,8 +611,8 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
       responses:
-        '204':
-          description: User updated
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -629,7 +633,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -648,7 +652,7 @@ paths:
         - Workout Plans
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -673,8 +677,8 @@ paths:
             schema:
               $ref: '#/components/schemas/WorkoutPlan'
       responses:
-        '201':
-          description: Workout plan created
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -701,7 +705,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful operation
+          description: OK
           content:
             application/json:
               schema:
@@ -724,8 +728,8 @@ paths:
           schema:
             type: string
       responses:
-        '204':
-          description: Workout plan deleted
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -750,8 +754,8 @@ paths:
             schema:
               $ref: '#/components/schemas/WorkoutPlan'
       responses:
-        '204':
-          description: Workout plan updated
+        '200':
+          description: OK
         '4XX':
           $ref: '#/components/responses/4XX'
 
