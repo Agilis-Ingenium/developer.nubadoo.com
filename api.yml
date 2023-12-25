@@ -5,7 +5,7 @@ info:
   description: |
     *Developers can use the Nubadoo Health Tracker API to tap into the platform's capabilities and incorporate the service into their own apps.*
     
-    The Nubadoo Health Tracker API's backbone is HTTP. The nature of our API is RESTful. It has a set of predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts JSON as an HTTP body payload and returns it.
+    The Nubadoo Health Tracker API's backbone is HTTP. The nature of our API is RESTful. It has a set of predictable resource URLs. It returns HTTP response codes to indicate errors. It accepts JSON as an HTTP body payload and returns JSON.
     
     You can use your favorite HTTP/REST library for your programming language or an HTTP client like Postman or CURL to use Nubadoo's API.
     
@@ -51,12 +51,12 @@ info:
   version: '1.0'
   contact:
     name: Nubadoo Dev Support Team
-    url: http://developer.nubadoo.com
+    url: https://developer.nubadoo.com
     email: developers@nubadoo.com
   x-logo:
-    url: "http://developer.nubadoo.com/open-api/logo.png"
+    url: "https://developer.nubadoo.com/open-api/logo.png"
     backgroundColor: "#fafafa"
-  termsOfService: http://www.nubadoo.com/terms-of-service
+  termsOfService: https://www.nubadoo.com/terms
 
 servers:
   - description: Dev Server
