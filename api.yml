@@ -118,11 +118,10 @@ x-tagGroups:
 paths:
   /v1/activities:
     get:
-      summary: Get all activities
-      operationId: getAllActivities
+      description: Get all activities
+      summary: getAllActivities
       tags:
         - Activities
-      description: Success
       responses:
         '200':
           description: Successful operation
@@ -139,8 +138,8 @@ paths:
           $ref: '#/components/responses/5XX'
     
     post:
-      summary: Add a new activity
-      operationId: addActivity
+      description: Add a new activity
+      summary: addActivity
       tags:
         - Activities
       requestBody:
@@ -162,8 +161,8 @@ paths:
           $ref: '#/components/responses/5XX'
   /v1/activities/user/{user-id}:
     get:
-      summary: Get activities by user ID
-      operationId: getActivitiesByUserId
+      description: Get activities by user ID
+      summary: getActivitiesByUserId
       tags:
         - Activities
       responses:
@@ -182,8 +181,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     delete:
-      summary: Delete activities by user ID
-      operationId: deleteActivitiesByUserId
+      description: Delete activities by user ID
+      summary: deleteActivitiesByUserId
       tags:
         - Activities
       responses:
@@ -203,8 +202,8 @@ paths:
                 
   /v1/activities/{activity-id}:
     delete:
-      summary: Delete an activity by its activity ID
-      operationId: deleteActivity
+      description: Delete an activity by its activity ID
+      summary: deleteActivity
       tags:
         - Activities
       responses:
@@ -217,8 +216,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     patch:
-      summary: Update an activity's information by the activity ID
-      operationId: updateActivity
+      description: Update an activity's information by the activity ID
+      summary: updateActivity
       tags:
         - Activities
       requestBody:
@@ -236,8 +235,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     get:
-      summary: Get an activity by activity ID
-      operationId: getActivityByActivityId
+      description: Get an activity by activity ID
+      summary: getActivityByActivityId
       tags:
         - Activities
       responses:
@@ -255,8 +254,8 @@ paths:
                 
   /v1/fitness-goals:
     get:
-      summary: Get all fitness goals
-      operationId: getAllFitnessGoals
+      description: Get all fitness goals
+      summary: getAllFitnessGoals
       tags:
         - Fitness Goals
       responses:
@@ -269,8 +268,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     post:
-      summary: Add a new fitness goal
-      operationId: addFitnessGoal
+      description: Add a new fitness goal
+      summary: addFitnessGoal
       tags:
         - Fitness Goals
       requestBody:
@@ -295,8 +294,8 @@ paths:
                 
   /v1/fitness-goals/{fitness-goal-id}:
     get:
-      summary: Get fitness goal by ID
-      operationId: getFitnessGoalByFitnessGoalId
+      description: Get fitness goal by ID
+      summary: getFitnessGoalByFitnessGoalId
       tags:
         - Fitness Goals
       parameters:
@@ -319,8 +318,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     delete:
-      summary: Delete fitness goal by ID
-      operationId: deleteFitnessGoal
+      description: Delete fitness goal by ID
+      summary: deleteFitnessGoal
       tags:
         - Fitness Goals
       parameters:
@@ -343,8 +342,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     patch:
-      summary: Update fitness goal by ID
-      operationId: updateFitnessGoal
+      description: Update fitness goal by ID
+      summary: updateFitnessGoal
       tags:
         - Fitness Goals
       parameters:
@@ -374,8 +373,8 @@ paths:
                 
   /v1/food-items:
     get:
-      summary: Get all food items
-      operationId: getAllFoodItems
+      description: Get all food items
+      summary: getAllFoodItems
       tags:
         - Food Items
       responses:
@@ -388,8 +387,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/FoodItem'
     post:
-      summary: Add a new food item
-      operationId: addFoodItem
+      description: Add a new food item
+      summary: addFoodItem
       tags:
         - Food Items
       requestBody:
@@ -413,8 +412,8 @@ paths:
           
   /v1/food-items/{food-item-id}:
     get:
-      summary: Get a specific food item by ID
-      operationId: getFoodItemByFoodItemId
+      description: Get a specific food item by ID
+      summary: getFoodItemByFoodItemId
       tags:
         - Food Items
       parameters:
@@ -437,8 +436,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     delete:
-      summary: Delete a food item by ID
-      operationId: deleteFoodItem
+      description: Delete a food item by ID
+      summary: deleteFoodItem
       tags:
         - Food Items
       parameters:
@@ -461,8 +460,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     patch:
-      summary: Update an existing food item
-      operationId: updateFoodItem
+      description: Update an existing food item
+      summary: updateFoodItem
       tags:
         - Food Items
       parameters:
@@ -492,8 +491,8 @@ paths:
                 
   /v1/ping:
     get:
-      summary: Get Pong response
-      operationId: pong
+      description: Get Pong response
+      summary: pong
       tags:
         - Ping
       responses:
@@ -511,8 +510,8 @@ paths:
                 
   /v1/users:
     get:
-      summary: Get all users
-      operationId: getAllUsers
+      description: Get all users
+      summary: getAllUsers
       tags:
         - Users
       responses:
@@ -525,8 +524,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
     post:
-      summary: Add a new user
-      operationId: addUser
+      description: Add a new user
+      summary: addUser
       tags:
         - Users
       requestBody:
@@ -550,8 +549,8 @@ paths:
           
   '/v1/users/{user-id}':
     get:
-      summary: Get a user by their user ID
-      operationId: getUserByUserId
+      description: Get a user by their user ID
+      summary: getUserByUserId
       tags:
         - Users
       parameters:
@@ -574,8 +573,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     delete:
-      summary: Delete a user by their user ID
-      operationId: deleteUser
+      description: Delete a user by their user ID
+      summary: deleteUser
       tags:
         - Users
       parameters:
@@ -594,8 +593,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     patch:
-      summary: Update a user's information by their user ID
-      operationId: updateUser
+      description: Update a user's information by their user ID
+      summary: updateUser
       tags:
         - Users
       parameters:
@@ -621,8 +620,8 @@ paths:
           
   '/v1/users/email/{email}':
     get:
-      summary: Get a user by their email address
-      operationId: getUserByEmail
+      description: Get a user by their email address
+      summary: getUserByEmail
       tags:
         - Users
       parameters:
@@ -646,8 +645,8 @@ paths:
           
   /v1/workout-plans:
     get:
-      summary: Get all workout plans
-      operationId: getAllWorkoutPlans
+      description: Get all workout plans
+      summary: getAllWorkoutPlans
       tags:
         - Workout Plans
       responses:
@@ -666,8 +665,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     post:
-      summary: Add a new workout plan
-      operationId: addWorkoutPlan
+      description: Add a new workout plan
+      summary: addWorkoutPlan
       tags:
         - Workout Plans
       requestBody:
@@ -693,8 +692,8 @@ paths:
           
   '/v1/workout-plans/{workout-plan-id}':
     get:
-      summary: Get a workout plan by its workout plan ID
-      operationId: getWorkoutPlanByWorkoutPlanId
+      description: Get a workout plan by its workout plan ID
+      summary: getWorkoutPlanByWorkoutPlanId
       tags:
         - Workout Plans
       parameters:
@@ -717,8 +716,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     delete:
-      summary: Delete a workout plan by its workout plan ID
-      operationId: deleteWorkoutPlan
+      description: Delete a workout plan by its workout plan ID
+      summary: deleteWorkoutPlan
       tags:
         - Workout Plans
       parameters:
@@ -737,8 +736,8 @@ paths:
           $ref: '#/components/responses/5XX'
           
     patch:
-      summary: Update a workout plan's information by its workout plan ID
-      operationId: updateWorkoutPlan
+      description: Update a workout plan's information by its workout plan ID
+      summary: updateWorkoutPlan
       tags:
         - Workout Plans
       parameters:
@@ -1043,6 +1042,8 @@ components:
               name:
                 type: string
                 example: 'InternalServerError'
+                description: 'InternalServerError'
               message:
                 type: string
                 example: 'We are sorry but something went wrong on our side.'
+                description: 'We are sorry but something went wrong on our side.'
