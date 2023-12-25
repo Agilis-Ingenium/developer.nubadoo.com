@@ -20,7 +20,7 @@ info:
     
     ## Successful Responses - 2XX
     
-    ### 200 - OK
+    ### 200 - Successful operation
     
     The request has succeeded.
     
@@ -125,7 +125,7 @@ paths:
       description: Success
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -150,7 +150,7 @@ paths:
               $ref: '#/components/schemas/Activity'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -168,7 +168,7 @@ paths:
         - Activities
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -188,7 +188,7 @@ paths:
         - Activities
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -209,7 +209,7 @@ paths:
         - Activities
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -228,7 +228,7 @@ paths:
               $ref: '#/components/schemas/Activity'
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -242,7 +242,7 @@ paths:
         - Activities
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -261,7 +261,7 @@ paths:
         - Fitness Goals
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -282,7 +282,7 @@ paths:
               
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -307,7 +307,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -331,7 +331,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -361,7 +361,7 @@ paths:
               $ref: '#/components/schemas/FitnessGoal'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -380,7 +380,7 @@ paths:
         - Food Items
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -400,7 +400,7 @@ paths:
               $ref: '#/components/schemas/FoodItem'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -425,7 +425,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -449,7 +449,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -479,7 +479,7 @@ paths:
               $ref: '#/components/schemas/FoodItem'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -498,7 +498,7 @@ paths:
         - Ping
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -517,7 +517,7 @@ paths:
         - Users
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -537,7 +537,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -562,7 +562,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -586,7 +586,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -612,7 +612,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -633,7 +633,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -652,7 +652,7 @@ paths:
         - Workout Plans
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -678,7 +678,7 @@ paths:
               $ref: '#/components/schemas/WorkoutPlan'
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -705,7 +705,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -729,7 +729,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
@@ -755,7 +755,7 @@ paths:
               $ref: '#/components/schemas/WorkoutPlan'
       responses:
         '200':
-          description: OK
+          description: Successful operation
         '4XX':
           $ref: '#/components/responses/4XX'
 
