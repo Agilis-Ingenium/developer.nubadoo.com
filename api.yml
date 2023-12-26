@@ -64,9 +64,9 @@ info:
 
 servers:
   - description: Dev Server
-    url: http://localhost:7060
+    url: http://localhost:7060/v1
   - description: Live Server
-    url: https://api.nubadoo.com
+    url: https://api.nubadoo.com/v1
 
 tags:
 - name: Activities
@@ -116,7 +116,7 @@ x-tagGroups:
     - Ping
 
 paths:
-  /v1/activities:
+  /activities:
     get:
       description: Get all activities
       summary: getAllActivities
@@ -159,7 +159,7 @@ paths:
 
         '5XX':
           $ref: '#/components/responses/5XX'
-  /v1/activities/user/{user-id}:
+  /activities/user/{user-id}:
     parameters:
     - in: path
       name: user-id
@@ -206,7 +206,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/activities/{activity-id}:
+  /activities/{activity-id}:
     parameters:
     - in: path
       name: activity-id
@@ -264,7 +264,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/fitness-goals:
+  /fitness-goals:
     get:
       description: Get all fitness goals
       summary: getAllFitnessGoals
@@ -304,7 +304,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/fitness-goals/{fitness-goal-id}:
+  /fitness-goals/{fitness-goal-id}:
     get:
       description: Get fitness goal by ID
       summary: getFitnessGoalByFitnessGoalId
@@ -383,7 +383,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/food-items:
+  /food-items:
     get:
       description: Get all food items
       summary: getAllFoodItems
@@ -422,7 +422,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
-  /v1/food-items/{food-item-id}:
+  /food-items/{food-item-id}:
     get:
       description: Get a specific food item by ID
       summary: getFoodItemByFoodItemId
@@ -501,7 +501,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/ping:
+  /ping:
     get:
       description: Get Pong response
       summary: pong
@@ -520,7 +520,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
                 
-  /v1/users:
+  /users:
     get:
       description: Get all users
       summary: getAllUsers
@@ -559,7 +559,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
-  '/v1/users/{user-id}':
+  /users/{user-id}:
     get:
       description: Get a user by their user ID
       summary: getUserByUserId
@@ -630,7 +630,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
-  '/v1/users/email/{email}':
+  /users/email/{email}:
     get:
       description: Get a user by their email address
       summary: getUserByEmail
@@ -655,7 +655,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
-  /v1/workout-plans:
+  /workout-plans:
     get:
       description: Get all workout plans
       summary: getAllWorkoutPlans
@@ -702,7 +702,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
-  '/v1/workout-plans/{workout-plan-id}':
+  /workout-plans/{workout-plan-id}:
     get:
       description: Get a workout plan by its workout plan ID
       summary: getWorkoutPlanByWorkoutPlanId
@@ -767,6 +767,171 @@ paths:
       responses:
         '204':
           description: No content
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+  /metrics:
+    get:
+      description: Get all metrics
+      summary: getAllMetrics
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Metric'
+    post:
+      description: Add a new metric
+      summary: addMetric
+      tags:
+        - Metrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Metric'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metric'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+  /metrics/{metric-id}:
+    get:
+      description: Get a specific metric by ID
+      summary: getMetricByMetricId
+      tags:
+        - Metrics
+      parameters:
+        - name: metric-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metric'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+    delete:
+      description: Delete a metric by ID
+      summary: deleteMetric
+      tags:
+        - Metrics
+      parameters:
+        - name: metric-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metric'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+    patch:
+      description: Update an existing metric
+      summary: updateMetric
+      tags:
+        - Metrics
+      parameters:
+        - name: metric-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Metric'
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metric'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+  /metrics/user/{user-id}:
+    parameters:
+    - in: path
+      name: user-id
+      schema:
+        type: integer
+      required: true
+    get:
+      description: Get metrics by user ID
+      summary: getMetricsByUserId
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Metric'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
+          
+    delete:
+      description: Delete metrics by user ID
+      summary: deleteMetricsByUserId
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Metric'
         '4XX':
           $ref: '#/components/responses/4XX'
 
