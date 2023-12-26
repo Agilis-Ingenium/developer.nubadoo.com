@@ -895,20 +895,31 @@ paths:
           $ref: '#/components/responses/5XX'
           
   /metrics/user/{user-id}:
-    parameters:
-    - in: path
-      name: user-id
-      schema:
-        type: integer
-      required: true
     get:
-      description: Get metrics by user ID
-      summary: getMetricsByUserId
+      summary: Get metrics based on user ID and optional filters
+      operationId: getMetricsByUserId
       tags:
         - Metrics
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          description: The ID of the user to retrieve metrics for.
+          schema:
+            type: integer
+            format: int32
+        - name: filter
+          in: query
+          description: Filter metrics by category (Optional)
+          schema:
+            type: string
+            enum:
+              - health
+              - physique
+              - sleep
       responses:
         '200':
-          description: OK
+          description: Metrics retrieved successfully
           content:
             application/json:
               schema:
@@ -926,6 +937,14 @@ paths:
       summary: deleteMetricsByUserId
       tags:
         - Metrics
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          description: The ID of the user to retrieve metrics for.
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
           description: OK
