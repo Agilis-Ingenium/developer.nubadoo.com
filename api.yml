@@ -815,6 +815,23 @@ paths:
         '5XX':
           $ref: '#/components/responses/5XX'
           
+  /meal-logs:
+    get:
+      summary: Get all meal logs
+      operationId: getAllMealLogs
+      tags:
+        - Meal Logs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MealLog'
+
+          
   /metrics/{metric-id}:
     get:
       description: Get a specific metric by ID
@@ -1053,10 +1070,23 @@ components:
             maxLength: 255
             nullable: true
             description: Minerals in the food item (nullable)
-
+            
     MealLog:
       type: object
       properties:
+        logId:
+          type: integer
+        userId:
+          type: integer
+        mealTime:
+          type: string
+          format: date-time
+        totalCalories:
+          type: integer
+        foodItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodItem'
 
     Metric:
       type: object
