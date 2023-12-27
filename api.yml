@@ -398,6 +398,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/FoodItem'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
     post:
       description: Add a new food item
       summary: addFoodItem
@@ -535,6 +540,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
     post:
       description: Add a new user
       summary: addUser
@@ -830,6 +840,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MealLog'
+        '4XX':
+          $ref: '#/components/responses/4XX'
+
+        '5XX':
+          $ref: '#/components/responses/5XX'
 
           
   /metrics/{metric-id}:
